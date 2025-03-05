@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #262626;
+  color: #d9d9d9;
+  display: flex;
+  font-family: "Hanken Grotesk", Arial, sans-serif;
+  height: 100vh;
+  justify-content: center;
+  margin: 0;
+  padding: 20px;
+}
+
+.header {
+  justify-content: center;
+}
+
+.header__title {
+  color: #f9f4da;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.header__description {
+  color: #8e8e8e;
+  font-size: 0.875rem;
+  max-width: 350px;
+}
