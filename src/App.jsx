@@ -9,12 +9,8 @@ function App() {
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
   const keyboardElement = alphabet.split("").map((letter, index) => {
-    const styles = {
-      backgroundColor: currentWord.includes(letter) ? "#10A95B" : "#EC5D49",
-    };
     return (
       <button
-        style={styles}
         onClick={() => handleKeyboard(letter)}
         key={index}
         className="keyboard__letter"
