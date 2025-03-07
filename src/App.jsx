@@ -1,19 +1,29 @@
 import { languages } from "./assets/languages";
 import { useState } from "react";
+import { clsx } from "clsx";
 
 function App() {
   const [currentWord, setCurrentWord] = useState("react");
-  const [letterChoice, setLetterChoice] = useState([]);
-  console.log(letterChoice);
+  const [guessedLetters, setGuessedLetters] = useState([]);
+  console.log(guessedLetters);
 
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
   const keyboardElement = alphabet.split("").map((letter, index) => {
+    const isGuessed = guessedLetters.includes(letter);
+    const isCorrect = isGuessed && currentWord.includes(letter);
+    const isWrong = isGuessed && !currentWord.includes(letter);
+
+    const className = clsx("keyboard__letter", {
+      "keyboard__letter--correct": isCorrect,
+      "keyboard__letter--wrong": isWrong,
+    });
+
     return (
       <button
-        onClick={() => handleKeyboard(letter)}
+        onClick={() => addGuessedLetter(letter)}
         key={index}
-        className="keyboard__letter"
+        className={className}
       >
         {letter.toUpperCase()}
       </button>
@@ -40,8 +50,8 @@ function App() {
     );
   });
 
-  function handleKeyboard(letter) {
-    setLetterChoice((prevLetter) =>
+  function addGuessedLetter(letter) {
+    setGuessedLetters((prevLetter) =>
       prevLetter.includes(letter) ? prevLetter : [...prevLetter, letter]
     );
   }

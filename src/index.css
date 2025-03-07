@@ -108,6 +108,14 @@ body {
   width: 40px;
 }
 
+.keyboard__letter--correct {
+  background-color: #10a95b;
+}
+
+.keyboard__letter--wrong {
+  background-color: #ec5d49;
+}
+
 .new-game {
   align-items: center;
   display: flex;
