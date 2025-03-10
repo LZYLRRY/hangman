@@ -62,6 +62,10 @@ body {
   padding-inline: 3px;
 }
 
+.language__chips--lost {
+  text-decoration: line-through;
+}
+
 .word {
   display: flex;
   gap: 5px;

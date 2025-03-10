@@ -3,10 +3,18 @@ import { useState } from "react";
 import { clsx } from "clsx";
 
 function App() {
+  // State values
   const [currentWord, setCurrentWord] = useState("react");
   const [guessedLetters, setGuessedLetters] = useState([]);
-  console.log(guessedLetters);
 
+  // Derived values
+  let wrongGuessCount = guessedLetters.filter(
+    (letter) => !currentWord.includes(letter)
+  ).length;
+
+  console.log(wrongGuessCount);
+
+  // Static values
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
   const keyboardElement = alphabet.split("").map((letter, index) => {
@@ -33,18 +41,25 @@ function App() {
   const wordElement = currentWord.split("").map((letter, index) => {
     return (
       <span key={index} className="word__letter">
-        {letter.toUpperCase()}
+        {guessedLetters.includes(letter) ? letter.toUpperCase() : ""}
       </span>
     );
   });
 
-  const languagesElement = languages.map((language) => {
+  const languagesElement = languages.map((language, index) => {
+    const isLanguageLost = index < wrongGuessCount;
     const styles = {
       backgroundColor: language.backgroundColor,
       color: language.color,
     };
+
+    const className = clsx(
+      "language__chips",
+      isLanguageLost && "language__chips--lost"
+    );
+
     return (
-      <span key={language.name} className="language__chips" style={styles}>
+      <span key={language.name} className={className} style={styles}>
         {language.name}
       </span>
     );
