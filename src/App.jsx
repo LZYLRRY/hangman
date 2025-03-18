@@ -12,6 +12,12 @@ function App() {
     (letter) => !currentWord.includes(letter)
   ).length;
 
+  const isGameWon = currentWord
+    .split("")
+    .every((letter) => guessedLetters.includes(letter));
+  const isGameLost = wrongGuessCount >= languages.length - 1;
+  const isGameOver = isGameWon || isGameLost;
+
   console.log(wrongGuessCount);
 
   // Static values
@@ -48,6 +54,7 @@ function App() {
 
   const languagesElement = languages.map((language, index) => {
     const isLanguageLost = index < wrongGuessCount;
+
     const styles = {
       backgroundColor: language.backgroundColor,
       color: language.color,
@@ -89,7 +96,7 @@ function App() {
         <section className="word">{wordElement}</section>
         <section className="keyboard">{keyboardElement}</section>
         <section className="new-game">
-          <button className="new-game__button">New Game</button>
+          {isGameOver && <button className="new-game__button">New Game</button>}
         </section>
       </main>
     </>
