@@ -39,10 +39,10 @@ body {
   color: #f9f4da;
   display: flex;
   flex-direction: column;
+  height: 100px;
   justify-content: center;
   margin-block: 30px;
   max-width: 350px;
-  min-height: 60px;
   width: 100%;
 }
 
