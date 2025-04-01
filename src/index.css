@@ -5,12 +5,16 @@
 body {
   background-color: #262626;
   color: #d9d9d9;
-  display: flex;
   font-family: "Hanken Grotesk", Arial, sans-serif;
   height: 100vh;
-  justify-content: center;
   margin: 0;
   padding: 20px;
+}
+
+.main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
@@ -31,12 +35,15 @@ body {
 
 .game-status {
   align-items: center;
-  background-color: #10a95b;
   border-radius: 4px;
   color: #f9f4da;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin-block: 30px;
+  max-width: 350px;
+  min-height: 60px;
+  width: 100%;
 }
 
 .game-status__title {
@@ -46,6 +53,21 @@ body {
 
 .game-status__description {
   margin: 5px;
+}
+
+.game-status--farewell {
+  background-color: #7a5ea7;
+  border: 1px dashed #323232;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.game-status--won {
+  background-color: #10a95b;
+}
+
+.game-status--lost {
+  background-color: #ba2a2a;
 }
 
 .language {
@@ -85,6 +107,10 @@ body {
   width: 40px;
 }
 
+.word__letter--reveal {
+  color: #ec5d49;
+}
+
 .keyboard {
   display: flex;
   flex-wrap: wrap;
@@ -101,6 +127,7 @@ body {
   border-radius: 4px;
   border-width: 1px;
   color: #1e1e1e;
+  cursor: pointer;
   display: flex;
   font-family: "Hanken Grotesk", Arial, sans-serif;
   font-size: 1.125rem;
@@ -110,6 +137,11 @@ body {
   justify-content: center;
   padding: 6px;
   width: 40px;
+}
+
+.keyboard__letter:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .keyboard__letter--correct {
@@ -135,5 +167,18 @@ body {
   font-size: 1.125rem;
   font-weight: 600;
   height: 40px;
+  cursor: pointer;
   width: 220px;
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
